@@ -1,8 +1,9 @@
+# pylint: disable=missing-function-docstring,missing-module-docstring,missing-class-docstring
 import sqlite3
 
 
 
-class TaskService:
+class TaskServiceSketch:
 
     def __init__(self):
         self.connection = sqlite3.connect("tasks.db")
@@ -69,12 +70,12 @@ class TaskService:
             self.connection.close()
 
     def list_tasks(self):
+        tasks = []
         try:
             # select all the tasks
             self.cursor.execute("""
             SELECT * FROM tasks""", ())
             rows = self.cursor.fetchall()
-            tasks = []
             for row in rows:
                 tasks.append({
                     "id": row[0],
@@ -83,8 +84,9 @@ class TaskService:
                     "status": row[3],
                     "created_at": row[4]
                 })
-            return tasks
         except sqlite3.Error as e:
             print(f"An error occurred: {e}")
         finally:
             self.connection.close()
+
+        return tasks

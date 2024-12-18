@@ -1,3 +1,5 @@
+# pylint: disable=missing-function-docstring,missing-module-docstring,missing-class-docstring
+
 from pydantic import BaseModel
 
 
