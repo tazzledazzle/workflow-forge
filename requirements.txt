@@ -5,3 +5,5 @@ pydantic
 uvicorn
 jose
 pylint
+grpcio
+grpcio-tools

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service TaskService {
+  rpc NotifyTask (TaskEvent) returns (NotificationAck);
+}
+
+message TaskEvent {
+  string event_type = 1; // e.g., "task_created", "task_updated"
+  string task_id = 2;
+  string task_name = 3;
+}
+
+message NotificationAck {
+  string message = 1; // Acknowledgment message
+}
